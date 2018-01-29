@@ -1,0 +1,14 @@
+version: '3'
+services:
+  varnish:
+    image: "million12/varnish"
+    ports:
+      - 9090:80
+    volumes: 
+      - ./varnish:/data
+    environment: 
+      - VCL_CONFIG=/data/varnish.vcl
+  template-server:
+    build: ./templates
+  content-server:
+    build: ./counter
